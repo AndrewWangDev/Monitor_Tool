@@ -1,6 +1,6 @@
 [package]
 name = "toolkit"
-version = "0.2.0"
+version = "2.3.0"
 description = "A lightweight system status monitor for Windows"
 authors = ["Andrew Wang Dev <me@andrewwangdev.com>"]
 edition = "2021"

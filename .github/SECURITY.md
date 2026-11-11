@@ -8,8 +8,8 @@ Only the latest release of Toolkit receives active security updates and vulnerab
 
 | Version | Supported          |
 | :------ | :----------------- |
-| 0.2.x   | :white_check_mark: |
-| < 0.2.0 | :x:                |
+| 2.3.x   | :white_check_mark: |
+| < 2.3.0 | :x:                |
 
 ## Reporting a Vulnerability
 

@@ -12,8 +12,8 @@ body:
     id: version
     attributes:
       label: Toolkit Version
-      description: What version of Toolkit are you running? (e.g. 0.2.0 or commit hash)
-      placeholder: "0.2.0"
+      description: What version of Toolkit are you running? (e.g. 2.3.0 or commit hash)
+      placeholder: "2.3.0"
     validations:
       required: true
   - type: dropdown
