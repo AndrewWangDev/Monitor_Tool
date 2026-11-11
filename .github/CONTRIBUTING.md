@@ -18,8 +18,8 @@ By participating in this project, you agree to abide by our [Code of Conduct](CO
 ### Local Environment
 1. Fork and clone the repository:
    ```bash
-   git clone https://github.com/<your-username>/monitor_tool.git
-   cd monitor_tool
+   git clone https://github.com/<your-username>/Monitor_Tool.git
+   cd Monitor_Tool
    ```
 2. Install frontend dependencies:
    ```bash
@@ -49,13 +49,13 @@ We enforce the [Conventional Commits](https://www.conventionalcommits.org/) stan
 ### Pre-PR Checklist
 Before opening a Pull Request, verify that your changes pass all local quality checks:
 ```bash
-# Verify TypeScript types and frontend build
+# Run frontend unit tests and TypeScript / Vite build
+npm test
 npm run build
 
-# Run Rust linter and clippy checks
-cargo clippy --manifest-path src-tauri/Cargo.toml
-
-# Run automated unit tests
+# Verify Rust formatting, strict Clippy lints, and unit tests
+cargo fmt --manifest-path src-tauri/Cargo.toml -- --check
+cargo clippy --manifest-path src-tauri/Cargo.toml -- -D warnings
 cargo test --manifest-path src-tauri/Cargo.toml
 ```
 

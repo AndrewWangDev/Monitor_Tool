@@ -1,87 +1,63 @@
-# Toolkit - System Status Monitor
+# Toolkit
 
+A lightweight, native always-on-top Windows system monitor built with **Tauri v2**, **Rust**, **React 19**, **TypeScript**, and **Tailwind CSS v4**.
 
 <p align="center">
-    <img src="https://img.shields.io/badge/Status-Active-success?style=flat-square" alt="Status" />
-    <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License" />
-    <img src="https://img.shields.io/badge/Platform-Windows-blue?style=flat-square" alt="Platform" />
+  <img src="docs/preview.png" alt="Toolkit Preview" width="380" />
 </p>
 
-**Toolkit** is a lightweight, high-aesthetic system status monitor for Windows, built with **Tauri**, **React**, and **Rust**.
+## Features
 
-Inspired by Material You design principles, it provides a beautiful, transparent, and always-on-top floating window to keep track of your system's vital statistics without cluttering your workspace.
-<p align="center">
-    <img src="Test.png" alt="Toolkit Intro" style="width:400px; height:auto; border-radius:12px; box-shadow:0 12px 30px rgba(0,0,0,0.35);" />
-</p>
-## ✨ Features
+- **Real-Time Telemetry (`sys://metrics`)**: Event-driven Rust polling (`sysinfo` + Win32 battery APIs) streaming CPU usage, RAM consumption, network upload/download rates, and battery status once per second without IPC polling overhead.
+- **Physical Adapter Filtering**: Excludes loopback (`lo`) and virtual adapters (VMware, Docker, WSL, Hyper-V, Tailscale, WireGuard, Npcap, Bluetooth) while accurately retaining physical Ethernet and Wi-Fi adapters.
+- **Idle Polling Pause**: Automatically suspends background metric sampling when the widget is minimized or hidden to the system tray (`Condvar`-driven wakeup on show).
+- **Explicit EN / 中 Bilingual UI & Tray Sync**: Instant in-app language toggle (`EN / 中`) persisted in `localStorage` and synchronized with native Windows system tray menu labels (`set_tray_language`).
+- **Dynamic Layout Sizing**: Measures visible card stack and settings panel heights with `ResizeObserver` to resize cleanly without card clipping.
+- **Native Desktop Integration**: Single-instance lock (`tauri-plugin-single-instance`), remembered window position (`tauri-plugin-window-state`), optional silent startup to tray (`--autostart` via `tauri-plugin-autostart`), and hardened Tauri v2 capabilities & CSP.
 
-*   **Real-time Monitoring**:
-    *   **CPU Usage**: Real-time percentage tracking.
-    *   **RAM Usage**: Usage percentage and absolute value (GB).
-    *   **Network Speed**: Real-time download and upload speeds.
-    *   **Battery Status**: Battery level and charging state.
-*   **Modern Design**:
-    *   **Material You Aesthetics**: sleek, modern UI with dynamic transparency.
-    *   **Floating Window**: Borderless, always-on-top window that floats over other apps.
-    *   **Draggable**: Easily move the widget anywhere on your screen.
-*   **Lightweight**: Built on Tauri (Rust), ensuring minimal resource footprint compared to Electron alternatives.
+## Tech Stack
 
-## 🛠️ Tech Stack
+- **Backend**: Rust 2021, Tauri v2 (`tray-icon`), `sysinfo`, `windows`, `tauri-plugin-autostart`, `tauri-plugin-single-instance`, `tauri-plugin-window-state`
+- **Frontend**: React 19, TypeScript, Vite, Tailwind CSS v4, Lucide Icons, Vitest
 
-*   **Frontend**: React, TypeScript, Vite, TailwindCSS
-*   **Backend**: Rust (Tauri), `sysinfo` crate
-*   **Design**: Custom CSS variables implementing Material Design tokens
-
-## 🚀 Getting Started
+## Development
 
 ### Prerequisites
 
-*   [Node.js](https://nodejs.org/) (v16 or newer)
-*   [Rust](https://www.rust-lang.org/tools/install) (latest stable)
-*   [WebView2](https://developer.microsoft.com/en-us/microsoft-edge/webview2/) (Pre-installed on Windows 10/11)
+- **Windows 10 / 11** with Microsoft Edge WebView2
+- **Node.js** v18.0.0 or higher (CI runs Node 22)
+- **Rust** stable toolchain (`rustup update stable`) with MSVC Build Tools or MSYS2 MinGW64
 
-### Installation
-
-1.  **Clone the repository**:
-    ```bash
-    git clone https://github.com/AndrewWangDev/monitor_tool.git
-    cd monitor_tool
-    ```
-
-2.  **Install dependencies**:
-    ```bash
-    npm install
-    # or
-    yarn install
-    # or
-    pnpm install
-    ```
-
-3.  **Run in Development Mode**:
-    ```bash
-    npm run tauri dev
-    ```
-
-### Building for Production
-
-To create a standalone executable (`.exe`):
+### Local Setup
 
 ```bash
+git clone https://github.com/AndrewWangDev/Monitor_Tool.git
+cd Monitor_Tool
+npm install
+npm run tauri dev
+```
+
+### Verification & Build
+
+```bash
+# Run frontend unit tests & TypeScript/Vite build
+npm test
+npm run build
+
+# Verify Rust formatting, strict Clippy lints, and unit tests
+cargo fmt --manifest-path src-tauri/Cargo.toml -- --check
+cargo clippy --manifest-path src-tauri/Cargo.toml -- -D warnings
+cargo test --manifest-path src-tauri/Cargo.toml
+
+# Build production Windows installer & standalone binary
 npm run tauri build
 ```
 
-The output file will be located in `src-tauri/target/release/bundle/nsis/`.
+## Contributing & Security
 
-## 🤝 Contributing
+- Read [CONTRIBUTING.md](.github/CONTRIBUTING.md) before opening a pull request.
+- Report security vulnerabilities privately following [SECURITY.md](.github/SECURITY.md).
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+## License
 
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Licensed under the [MIT License](LICENSE) (`SPDX-License-Identifier: MIT`). Copyright (c) 2026 Andrew Wang Dev.

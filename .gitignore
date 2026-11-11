@@ -10,13 +10,30 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+coverage
+.vitest
 *.local
 
-# Editor directories and files
+# Rust & Tauri build outputs
+/target/
+/src-tauri/target/
+/src-tauri/gen/
+
+# Secrets & signing keys
+*.key
+*.pem
+.env
+.env.*
+!.env.example
+
+# Editor directories and OS files
 .vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
+._*
+Thumbs.db
+Desktop.ini
 *.suo
 *.ntvs*
 *.njsproj

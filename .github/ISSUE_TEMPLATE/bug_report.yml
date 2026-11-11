@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         Thank you for reporting an issue! Please search existing issues first to avoid duplicates.
-        *If you are reporting a security vulnerability, please do NOT use this form; refer to our [Security Policy](https://github.com/AndrewWangDev/monitor_tool/security/policy) instead.*
+        *If you are reporting a security vulnerability, please do NOT use this form; refer to our [Security Policy](https://github.com/AndrewWangDev/Monitor_Tool/security/policy) instead.*
   - type: input
     id: version
     attributes:

@@ -18,7 +18,7 @@ Only the latest release of Toolkit receives active security updates and vulnerab
 If you discover a security issue or potential vulnerability in this repository, please report it privately:
 
 1. **GitHub Private Vulnerability Reporting (Preferred)**:
-   Navigate to the [Security Advisories](https://github.com/AndrewWangDev/monitor_tool/security/advisories) tab of this repository and click **"Report a vulnerability"**.
+   Navigate to the [Security Advisories](https://github.com/AndrewWangDev/Monitor_Tool/security/advisories) tab of this repository and click **"Report a vulnerability"**.
 2. **Direct Security Contact**:
    Alternatively, email the maintainer directly at [me@andrewwangdev.com](mailto:me@andrewwangdev.com) with the subject line `[SECURITY] Potential Vulnerability in Toolkit`.
 
