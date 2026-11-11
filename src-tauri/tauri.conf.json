@@ -20,7 +20,8 @@
         "transparent": true,
         "alwaysOnTop": true,
         "resizable": false,
-        "shadow": false
+        "shadow": false,
+        "visible": false
       }
     ],
     "security": {
